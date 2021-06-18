@@ -48,6 +48,18 @@ data "vault_policy_document" "admin_policy" {
     capabilities = ["read", "sudo"]
   }
 
+  rule {
+    description  = "Create and manage namespaces"
+    path         = "sys/namespaces/*"
+    capabilities = ["create", "read", "update", "delete", "list"]
+  }
+
+  rule {
+    description  = "Create and manage identities"
+    path         = "identity/*"
+    capabilities = ["create", "read", "update", "delete", "list"]
+  }
+
   # Create and manage ACL policies broadly across Vault
   rule {
     description  = "List existing policies"
